@@ -1,14 +1,18 @@
 package edu.touro.mcon264.l13_reorder_list;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static edu.touro.mcon264.l13_reorder_list.Solution.ListNode;
+import static edu.touro.mcon264.l13_reorder_list.Solution.reorderList;
+
+
 
 import org.junit.jupiter.api.Test;
 
 class SolutionTest {
     // TODO: Add tests for Reorder List (L0→Ln→L1→Ln-1…)
     // Helper method to build a linked list from given values
-    private ListNode list(int... a) {
-        ListNode dummy = new ListNode(0);
+    private Solution.ListNode list(int... a) {
+        Solution.ListNode dummy = new Solution.ListNode(0);
         ListNode cur = dummy;
         for (int x : a) {
             cur.next = new ListNode(x);
@@ -31,7 +35,7 @@ class SolutionTest {
     void oddLength_works() {
         // Input: 1 → 2 → 3 → 4 → 5
         ListNode head = list(1, 2, 3, 4, 5);
-        new ReorderListSolution().reorderList(head);
+        reorderList(head);
 
         // Expected output: 1 → 5 → 2 → 4 → 3
         assertArrayEquals(new int[]{1, 5, 2, 4, 3}, toArray(head));
@@ -41,7 +45,7 @@ class SolutionTest {
     void evenLength_works() {
         // Input: 10 → 20 → 30 → 40
         ListNode head = list(10, 20, 30, 40);
-        new ReorderListSolution().reorderList(head);
+        reorderList(head);
 
         // Expected output: 10 → 40 → 20 → 30
         assertArrayEquals(new int[]{10, 40, 20, 30}, toArray(head));
@@ -51,18 +55,17 @@ class SolutionTest {
     void smallLists_noChangeOrSimpleMerge() {
         // Empty list
         ListNode h1 = list();
-        new ReorderListSolution().reorderList(h1);
+        reorderList(h1);
         assertArrayEquals(new int[]{}, toArray(h1));
 
         // Single node
         ListNode h2 = list(7);
-        new ReorderListSolution().reorderList(h2);
+        reorderList(h2);
         assertArrayEquals(new int[]{7}, toArray(h2));
 
         // Two nodes
         ListNode h3 = list(1, 2);
-        new ReorderListSolution().reorderList(h3);
+        reorderList(h3);
         assertArrayEquals(new int[]{1, 2}, toArray(h3));
     }
-}
 }

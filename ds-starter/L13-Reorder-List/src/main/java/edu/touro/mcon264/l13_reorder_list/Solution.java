@@ -1,8 +1,23 @@
 package edu.touro.mcon264.l13_reorder_list;
 
 public class Solution {
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int v) {
+            this.val = v;
+        }
+
+        ListNode(int v, ListNode n) {
+            this.val = v;
+            this.next = n;
+        }
+    }
+
+
     // TODO: Implement solution for: Reorder List (L0→Ln→L1→Ln-1…)
-    public void reorderList(ListNode head) {
+    public static void reorderList(ListNode head) {
         if (head == null || head.next == null) return;
 
         // 1) Find the middle (slow stops at the end of left half)
@@ -31,7 +46,7 @@ public class Solution {
         }
     }
 
-    private ListNode reverse(ListNode head) {
+    private static ListNode reverse(ListNode head) {
         ListNode prev = null, curr = head;
         while (curr != null) {
             ListNode next = curr.next;
@@ -41,7 +56,4 @@ public class Solution {
         }
         return prev;
     }
-}
-
-
 }
